@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Average", serif;
+    background-color: #174069;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.logo {
+    font-family: "EB Garamond", serif;
+    font-variant: small-caps;
+    font-weight: 600;
+    font-size: 4rem;
+    margin-bottom: -10px;
+}
+
+.tagline {
+    font-family: "EB Garamond", serif;
+    font-variant: small-caps;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Average", serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+    color: #ffffff;
+}
+
+.tab.active {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.tab-content {
+    display: none;
+    padding: 40px 0;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-family: "EB Garamond", serif;
+    font-variant: small-caps;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-title {
+    font-family: "EB Garamond", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.about-text {
+    text-align: left justify;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.contact-info {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    margin: 20px 0;
+    font-size: 1.1rem;
+}
+
+.contact-label {
+    font-family: "EB Garamond", serif;
+    font-weight: 600;
+    display: inline-block;
+    width: 100px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: border-color 0.3s ease;
+}
+
+a:hover {
+    border-bottom-color: #ffffff;
+}
+
+footer {
+    font-family: "EB Garamond", serif;
+    font-variant: small-caps;
+    font-weight: 400;
+    text-align: center;
+    padding: 40px 0 20px;
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        width: 200px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
