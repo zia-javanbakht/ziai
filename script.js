@@ -5,22 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(html => {
             document.getElementById('header-container').innerHTML = html;
 
-            // Set active tab based on current page
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            // Add hover events to dynamically loaded tabs
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => {
-                const href = tab.getAttribute('href');
-                if (href === currentPage || (currentPage === 'index.html' && href === 'index.html')) {
-                    tab.classList.add('active');
-                }
-
-                // Ensure hover events work on dynamically loaded content
-                // Store original color
-                const originalColor = this.classList.contains('active') ? '#ffffff' : 'rgba(255, 255, 255, 0.7)';
-
                 tab.addEventListener('mouseenter', function () {
                     this.style.color = '#ffffff';
-                    // Add slight scale effect for better feedback
                     this.style.transform = 'scale(1.05)';
                 });
 
@@ -33,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             console.error('Error loading header:', error);
-            // Fallback: show text navigation if header fails to load
+            // Fallback: show button navigation if header fails to load
             document.getElementById('header-container').innerHTML = `
                 <header>
     <div class="logo-container">
@@ -42,16 +31,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="tagline">minimalistic functional AI</p>
                 </header>
                 <nav class="tabs">
-                    <a href="index.html" class="tab">Home</a>
-                    <a href="about.html" class="tab">About</a>
-                    <a href="projects.html" class="tab">Projects</a>
-                    <a href="contact.html" class="tab">Contact</a>
+                    <button class="tab active" onclick="showTab('home')">Home</button>
+                    <button class="tab" onclick="showTab('about')">About</button>
+                    <button class="tab" onclick="showTab('projects')">Projects</button>
+                    <button class="tab" onclick="showTab('contact')">Contact</button>
                 </nav>
             `;
         });
 });
 
-function showTab(tabName) {
+function showTab(tabName, clickedElement) {
     // Hide all tab contents
     const tabContents = document.querySelectorAll('.tab-content');
     tabContents.forEach(content => {
@@ -65,8 +54,13 @@ function showTab(tabName) {
     });
 
     // Show selected tab content
-    document.getElementById(tabName).classList.add('active');
+    const targetContent = document.getElementById(tabName);
+    if (targetContent) {
+        targetContent.classList.add('active');
+    }
 
     // Add active class to clicked tab
-    event.target.classList.add('active');
+    if (clickedElement) {
+        clickedElement.classList.add('active');
+    }
 }
