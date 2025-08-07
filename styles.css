@@ -30,9 +30,14 @@ header {
 }
 
 .logo-image {
-    height: 50px;
+    height: 60px;
     width: auto;
     margin-bottom: 10px;
+    display: block;
+}
+
+.logo-text {
+    display: none;
 }
 
 .logo {
