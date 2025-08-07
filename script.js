@@ -13,10 +13,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (href === currentPage || (currentPage === 'index.html' && href === 'index.html')) {
                     tab.classList.add('active');
                 }
+                
+                // Ensure hover events work on dynamically loaded content
+                // Store original color
+                const originalColor = this.classList.contains('active') ? '#ffffff' : 'rgba(255, 255, 255, 0.7)';
+                
+                tab.addEventListener('mouseenter', function() {
+                    this.style.color = '#ffffff';
+                    // Add slight scale effect for better feedback
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                tab.addEventListener('mouseleave', function() {
+                    const isActive = this.classList.contains('active');
+                    this.style.color = isActive ? '#ffffff' : 'rgba(255, 255, 255, 0.7)';
+                    this.style.transform = 'scale(1)';
+                });
             });
         })
         .catch(error => {
             console.error('Error loading header:', error);
+            // Fallback: show text navigation if header fails to load
+            document.getElementById('header-container').innerHTML = `
+                <header>
+                    <h1 class="logo">ziAI</h1>
+                    <p class="tagline">minimalistic functional AI</p>
+                </header>
+                <nav class="tabs">
+                    <a href="index.html" class="tab">Home</a>
+                    <a href="about.html" class="tab">About</a>
+                    <a href="projects.html" class="tab">Projects</a>
+                    <a href="contact.html" class="tab">Contact</a>
+                </nav>
+            `;
         });
 });
 

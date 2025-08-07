@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Projects - ziAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .debug { background: #333; padding: 10px; margin: 10px 0; border-left: 4px solid #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="debug">
+            <p>Debug: Page loaded, waiting for header...</p>
+        </div>
+        <div id="header-container"></div>
+        
+        <main>
+            <div class="tab-content active">
+                <h2 class="section-title">Debug Projects Page</h2>
+                <div class="debug">
+                    <p>This page will show debug info about header loading and hover functionality.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    console.log('Debug: Script started');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Debug: DOM loaded, fetching header...');
+        
+        const debugDiv = document.querySelector('.debug');
+        debugDiv.innerHTML = '<p>Debug: Fetching header.html...</p>';
+        
+        fetch('header.html')
+            .then(response => {
+                console.log('Debug: Header response received', response.status);
+                debugDiv.innerHTML += '<p>Debug: Header fetch successful</p>';
+                return response.text();
+            })
+            .then(html => {
+                console.log('Debug: Header HTML received:', html.length, 'characters');
+                document.getElementById('header-container').innerHTML = html;
+                debugDiv.innerHTML += '<p>Debug: Header inserted into DOM</p>';
+                
+                // Set active tab based on current page
+                const currentPage = 'projects.html';
+                const tabs = document.querySelectorAll('.tab');
+                console.log('Debug: Found tabs:', tabs.length);
+                debugDiv.innerHTML += '<p>Debug: Found ' + tabs.length + ' tabs</p>';
+                
+                tabs.forEach((tab, index) => {
+                    const href = tab.getAttribute('href');
+                    console.log('Debug: Tab', index, 'href:', href);
+                    
+                    if (href === currentPage) {
+                        tab.classList.add('active');
+                        debugDiv.innerHTML += '<p>Debug: Set tab ' + index + ' as active</p>';
+                    }
+                    
+                    // Add explicit hover handlers
+                    tab.addEventListener('mouseenter', function() {
+                        console.log('Debug: Hover enter on tab:', href);
+                        if (!this.classList.contains('active')) {
+                            this.style.color = '#ffffff';
+                            debugDiv.innerHTML += '<p>Debug: Hover enter - ' + href + '</p>';
+                        }
+                    });
+                    
+                    tab.addEventListener('mouseleave', function() {
+                        console.log('Debug: Hover leave on tab:', href);
+                        if (!this.classList.contains('active')) {
+                            this.style.color = 'rgba(255, 255, 255, 0.7)';
+                            debugDiv.innerHTML += '<p>Debug: Hover leave - ' + href + '</p>';
+                        }
+                    });
+                });
+                
+                debugDiv.innerHTML += '<p>Debug: All hover handlers added</p>';
+            })
+            .catch(error => {
+                console.error('Debug: Error loading header:', error);
+                debugDiv.innerHTML += '<p>Debug: ERROR - ' + error.message + '</p>';
+            });
+    });
+    </script>
+</body>
+</html>

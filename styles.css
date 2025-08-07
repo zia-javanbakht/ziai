@@ -68,6 +68,8 @@ header {
     cursor: pointer;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .tab:hover {
@@ -123,6 +125,15 @@ header {
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
