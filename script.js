@@ -64,5 +64,5 @@ function showTab(tabName, clickedElement) {
         if (targetContent) {
             targetContent.classList.add('active');
         }
-    }, 10);
+    }, 50);
 }
