@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('header-container').innerHTML = `
                 <header>
     <div class="logo-container">
-        <img src="_logo/logo.png" class="logo-image">
+        <img src="logo/logo.png" class="logo-image">
     </div>
                     <p class="tagline">minimalistic functional AI</p>
                 </header>
