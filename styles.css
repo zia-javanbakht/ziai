@@ -17,6 +17,11 @@ body {
     padding: 20px;
 }
 
+main {
+    min-height: 600px;
+    position: relative;
+}
+
 header {
     text-align: center;
     padding: 40px 0;
@@ -87,13 +92,18 @@ header {
 }
 
 .tab-content {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     padding: 40px 0;
-    animation: fadeIn 0.5s ease-in;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
 }
 
 .tab-content.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
 }
 
 @keyframes fadeIn {
