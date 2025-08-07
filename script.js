@@ -41,26 +41,28 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function showTab(tabName, clickedElement) {
-    // Hide all tab contents
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabContents.forEach(content => {
-        content.classList.remove('active');
-    });
-
-    // Remove active class from all tabs
+    // Remove active class from all tabs immediately
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
         tab.classList.remove('active');
     });
 
-    // Show selected tab content
-    const targetContent = document.getElementById(tabName);
-    if (targetContent) {
-        targetContent.classList.add('active');
-    }
-
-    // Add active class to clicked tab
+    // Add active class to clicked tab immediately
     if (clickedElement) {
         clickedElement.classList.add('active');
     }
+
+    // Hide current active content first
+    const currentActive = document.querySelector('.tab-content.active');
+    if (currentActive) {
+        currentActive.classList.remove('active');
+    }
+
+    // Show new content after a tiny delay to ensure smooth transition
+    setTimeout(() => {
+        const targetContent = document.getElementById(tabName);
+        if (targetContent) {
+            targetContent.classList.add('active');
+        }
+    }, 10);
 }

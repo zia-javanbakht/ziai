@@ -96,14 +96,22 @@ header {
     visibility: hidden;
     padding: 40px 0;
     position: absolute;
-    width: 100%;
-    transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
+    width: calc(100% - 40px);
+    top: 0;
+    left: 20px;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
 }
 
 .tab-content.active {
     opacity: 1;
     visibility: visible;
     position: relative;
+    width: 100%;
+    top: auto;
+    left: auto;
+    pointer-events: auto;
+    z-index: 1;
 }
 
 @keyframes fadeIn {
