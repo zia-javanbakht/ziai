@@ -1,0 +1,70 @@
+% ══════════════════════════════════════════════════════════════════════════════════════════════════
+% !TeX TS-program = xelatex
+% !TeX spellcheck = en_GB
+% !BIB TS-program = biber
+% ══════════════════════════════════════════════════════════════════════════════════════════════════
+\documentclass[tikz,12pt]{Z}
+
+
+\begin{document}
+
+% Use the golden ratio (the aspect ratio = 1.618 ) for the size of your figures.
+% Using a picture enviornment and \put macro to put tikzpictures inside that for multiple pictures.
+% Dimensions of A4 paper: 210x297mm or 595.842pt (1pt=0.352778mm or 1mm=2.83465pt)
+
+\begin{tikzpicture}[line join=round,line cap=butt,background rectangle/.append style={line width=1pt},framed,inner frame sep=0pt]
+    % ──────────────────────────────────────────────────────────────────────────────────────────────────
+    % setup layers
+    % ──────────────────────────────────────────────────────────────────────────────────────────────────
+    \setuplayers
+    %%%
+    % width, height, margin, and padding of the figure:
+    %    #1 paper width
+    %    #2 paper height
+    %    #3 margin (optional, left and right symmetrical margin, default = 2cm)
+    %    #4 padding (optional, used for unsymmetrical horizontal padding,  default=0cm)
+    %
+    % Ex. \setupcanvass{210mm}{30mm}[0cm][0cm]
+    %     => figure width  = paper width  - 2 x margin - padding
+    %     => figure height = paper height
+    %
+    % Ex. \setupcanvass{210mm}{30mm} % Default values are sued for margin and padding
+    %
+    %     => figure width  = paper width  - 2 x (2cm)
+    %     => figure height = paper height
+    %
+    % • The dimensions of the canvas are (\zfigx,\zfigy).
+    %
+    % Remark.
+    %     1 pt = 0.352778 mm
+    %     1 mm = 2.83465 pt
+    %     1 px = 0.75 pt
+    %
+    % For Elsevier:
+    %   • full figures (\textwidth), change the width to 468.3324pt (about 165.217mm).
+    %   • half figures, use 80mm which is about 225pt.
+    %
+    % For MDPI:
+    %   • full figures (\textwidth), change the width to 180mm (about 443.86319pt = 156.585mm).
+    %   • half figures, use 75mm which is about 210pt.
+    % 
+    %%%
+
+    % For Elsevier figures (\textwidth), change the width to 468.3324pt
+    \setupcanvas{20mm}{10mm}[0cm]
+    % \drawgrid[step=1mm,black!30]
+    \drawstrut % for a strut without any grids
+
+    \setmainfont{EBGaramond-Regular.ttf}[
+        ItalicFont = EBGaramond-Italic.ttf,
+        BoldFont = EBGaramond-Bold.ttf,
+        BoldItalicFont = EBGaramond-BoldItalic.ttf
+    ]
+
+
+    \node [font=\scshape\HUGE,outer sep=0mm, inner sep=0mm,fill=none] at (\zfigx/2,\zfigy/2) {zi\textbf{AI}};
+
+\end{tikzpicture}
+
+
+\end{document}
