@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <button class="tab active" onclick="showTab('home')">Home</button>
                     <button class="tab" onclick="showTab('about')">About</button>
                     <button class="tab" onclick="showTab('projects')">Projects</button>
+                    <button class="tab" onclick="showTab('products')">Products</button>
                     <button class="tab" onclick="showTab('contact')">Contact</button>
                 </nav>
             `;
